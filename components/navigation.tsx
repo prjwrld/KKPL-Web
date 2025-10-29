@@ -50,7 +50,7 @@ export function Navigation() {
         </div>
       
       {/* Navigation */}
-      <nav className="bg-[#131f2f] backdrop-blur-sm border-b border-primary/20">
+      <nav className="bg-[#001728] backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}

@@ -32,8 +32,8 @@ export default function HomePage() {
 
     return (
       <div
-        className="w-full min-h-[350px] flex items-center justify-center px-2 py-4 md:px-4 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("https://static.wixstatic.com/media/0dd563_5d09d0c066354284af3a3f3c3f644552~mv2.jpg")' }}
+        className="w-full min-h-[350px] bg-cover bg-center bg-no-repeat flex items-center justify-center px-2 py-4 md:px-4"
+        style={{ backgroundImage: "url('https://static.wixstatic.com/media/0dd563_024d9a9078b3430d8ec5310fcc132c8c~mv2.jpg')" }}
       >
         <div className="w-full max-w-7xl mx-auto">
           <div className="relative w-full h-[400px] md:h-[500px]">
