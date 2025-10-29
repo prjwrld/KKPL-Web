@@ -8,6 +8,35 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 
 export default function HomePage() {
+  // Hero Section
+  const HeroSection = () => (
+    <div className="relative h-[5vh] min-h-[400px] w-full overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+          alt="Kabaddi Tournament"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/60 z-10"></div>
+      
+      {/* Content */}
+      <div className="relative z-20 h-full flex flex-col justify-center items-center text-center text-white px-4">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">KARNATAKA KABADDI PREMIER LEAGUE</h1>
+        <p className="text-xl md:text-2xl max-w-3xl mb-8">Experience the thrill of Kabaddi with the most exciting teams from across Karnataka</p>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button className="bg-primary hover:bg-primary/90 px-8 py-6 text-lg">View Schedule</Button>
+          <Button variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg">Our Teams</Button>
+        </div>
+      </div>
+    </div>
+  );
+
   const [currentSlide, setCurrentSlide] = useState(0)
   const [scheduleSlide, setScheduleSlide] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
@@ -128,6 +157,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen">
+      {/* Hero Section */}
+      <HeroSection />
+      
       {/* Hero Banner */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
