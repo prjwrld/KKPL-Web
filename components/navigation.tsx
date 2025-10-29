@@ -29,7 +29,7 @@ export function Navigation() {
           }
         }
         .marquee-content {
-          animation: marqueeScroll 30s linear infinite;
+          animation: marqueeScroll 50s linear infinite;
         }
       `}</style>
       <div className="sticky top-0 z-50">
