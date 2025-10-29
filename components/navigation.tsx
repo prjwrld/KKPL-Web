@@ -18,7 +18,39 @@ export function Navigation() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#131f2f] backdrop-blur-sm border-b border-primary/20">
+    <>
+      <style jsx>{`
+        @keyframes marqueeScroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .marquee-content {
+          animation: marqueeScroll 30s linear infinite;
+        }
+      `}</style>
+      <div className="sticky top-0 z-50">
+        {/* Marquee Banner */}
+        <div className="bg-gradient-to-r from-purple-900 via-purple-800 to-purple-900 h-10 flex items-center overflow-hidden border-b border-purple-700/30 relative">
+          <span className="absolute left-0 text-2xl z-10 bg-purple-900 h-full flex items-center px-4">🎉</span>
+          <div className="flex marquee-content">
+            {[...Array(2)].map((_, groupIndex) => (
+              <div key={groupIndex} className="flex gap-16 px-16">
+                {[...Array(15)].map((_, i) => (
+                  <span key={i} className="text-white font-semibold text-sm uppercase tracking-wider whitespace-nowrap">
+                    KKPL Coming Soon
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      
+      {/* Navigation */}
+      <nav className="bg-[#131f2f] backdrop-blur-sm border-b border-primary/20">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -76,5 +108,7 @@ export function Navigation() {
         )}
       </div>
     </nav>
+    </div>
+    </>
   )
 }
