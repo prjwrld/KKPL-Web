@@ -27,11 +27,14 @@ export default function HomePage() {
   // Hero Section
   const HeroSection = () => {
     const imageSrc = isMobile 
-      ? "https://static.wixstatic.com/media/0dd563_b2f94dc367534020a515c4f963720c51~mv2.png"
-      : "https://static.wixstatic.com/media/0dd563_c9816e8470894826ae39b9e0f36c0f60~mv2.png";
+      ? "https://static.wixstatic.com/media/0dd563_1f675019478347d4b830203c8bf23ef7~mv2.png"
+      : "https://static.wixstatic.com/media/0dd563_62f98381f5c045e4b1d8410fd6105548~mv2.png";
 
     return (
-      <div className="w-full bg-white min-h-[350px] flex items-center justify-center px-2 py-4 md:px-4">
+      <div
+        className="w-full min-h-[350px] flex items-center justify-center px-2 py-4 md:px-4 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url("https://static.wixstatic.com/media/0dd563_5d09d0c066354284af3a3f3c3f644552~mv2.jpg")' }}
+      >
         <div className="w-full max-w-7xl mx-auto">
           <div className="relative w-full h-[400px] md:h-[500px]">
             <Image
