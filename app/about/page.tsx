@@ -1,9 +1,10 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
+import type { LucideIcon } from "lucide-react"
 import { Heart, Users, Shield, Star } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useCallback } from "react"
+import { useEffect, useCallback, useMemo, useState } from "react"
 import useEmblaCarousel from "embla-carousel-react"
 
 interface Director {
@@ -12,6 +13,12 @@ interface Director {
   designation: string
   photo: string
   bio: string
+}
+
+interface Value {
+  icon: LucideIcon
+  title: string
+  description: string
 }
 
 function DirectorsCarousel({ directors }: { directors: Director[] }) {
@@ -59,7 +66,7 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
                     <div className="p-8 flex-1 flex flex-col justify-center bg-gradient-to-br from-white to-primary/5">
                       <h3 className="text-3xl font-bold text-primary mb-3 tracking-tight">{director.name}</h3>
                       <p className="text-blue font-semibold mb-5 text-lg border-l-4 border-primary pl-4">{director.designation}</p>
-                      <p className="text-foreground/90 leading-relaxed text-base">{director.bio}</p>
+                      <p className="text-foreground/90 leading-relaxed text-base text-justify">{director.bio}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -77,6 +84,92 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
             onClick={() => emblaApi?.scrollTo(idx * 2)}
             className="w-4 h-4 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125 shadow-md"
             aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function ValueCard({ value }: { value: Value }) {
+  const IconComponent = value.icon
+
+  return (
+    <Card className="text-center p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-2 hover:border-primary h-full">
+      <CardContent className="p-0">
+        <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <IconComponent className="w-10 h-10 text-primary" />
+        </div>
+        <h3 className="text-xl font-bold text-primary mb-4">{value.title}</h3>
+        <p className="text-foreground leading-relaxed text-center">{value.description}</p>
+      </CardContent>
+    </Card>
+  )
+}
+
+function ValuesCarousel({ values }: { values: Value[] }) {
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'start',
+  })
+
+  const valueSlides = useMemo(() => {
+    const slides: Value[][] = []
+    for (let i = 0; i < values.length; i += 2) {
+      slides.push(values.slice(i, i + 2))
+    }
+    return slides
+  }, [values])
+
+  const scrollNext = useCallback(() => {
+    emblaApi?.scrollNext()
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap())
+    }
+
+    onSelect()
+    emblaApi.on("select", onSelect)
+
+    const autoplay = setInterval(() => {
+      scrollNext()
+    }, 4000)
+
+    return () => {
+      clearInterval(autoplay)
+      emblaApi.off("select", onSelect)
+    }
+  }, [emblaApi, scrollNext])
+
+  return (
+    <div className="md:hidden">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex -mx-2">
+          {valueSlides.map((slide, index) => (
+            <div key={index} className="flex-[0_0_100%] px-2">
+              <div className="grid grid-cols-2 gap-4">
+                {slide.map((value) => (
+                  <ValueCard key={value.title} value={value} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-center gap-2 mt-6">
+        {valueSlides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => emblaApi?.scrollTo(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              selectedIndex === index ? 'bg-primary' : 'bg-primary/30 hover:bg-primary'
+            }`}
+            aria-label={`Go to values slide ${index + 1}`}
           />
         ))}
       </div>
@@ -130,7 +223,7 @@ export default function AboutPage() {
     },
   ]
 
-  const values = [
+  const values: Value[] = [
     {
       icon: Users,
       title: "Teamwork",
@@ -179,12 +272,12 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
             <div>
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">Our Story</h2>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
+              <p className="text-lg text-foreground leading-relaxed text-justify mb-6">
                 The Karnataka Kabaddi Pro League (KKPL) was born from a vision to create a platform where the ancient
                 sport of kabaddi could thrive in the modern era. Founded by passionate sports enthusiasts and former
                 players, KKPL represents the perfect blend of traditional values and contemporary competitive spirit.
               </p>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lg text-foreground leading-relaxed text-justify">
                 Since our inception, we have been committed to discovering, nurturing, and showcasing the incredible
                 kabaddi talent that Karnataka has to offer. Our league serves as a stepping stone for aspiring athletes
                 to reach national and international levels while preserving the cultural significance of this beloved
@@ -217,12 +310,12 @@ export default function AboutPage() {
             </div>
             <div className="order-1 lg:order-2">
               <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">League Overview</h2>
-              <p className="text-lg text-foreground leading-relaxed mb-6">
+              <p className="text-lg text-foreground leading-relaxed text-justify mb-6">
                 KKPL is Karnataka&apos;s premier state-level kabaddi tournament that brings together the finest teams
                 from across the state. Our league features a comprehensive tournament structure designed to provide
                 maximum exposure and competitive opportunities for all participating teams.
               </p>
-              <p className="text-lg text-foreground leading-relaxed">
+              <p className="text-lg text-foreground leading-relaxed text-justify">
                 From bustling cities like Bengaluru and Mysuru to smaller towns and rural areas, KKPL unites diverse
                 communities through the shared love of kabaddi. Our tournament serves as a melting pot where different
                 playing styles, strategies, and regional traditions come together to create an unforgettable sporting
@@ -243,24 +336,15 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {values.map((value, index) => {
-              const IconComponent = value.icon
-              return (
-                <Card
-                  key={index}
-                  className="text-center p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-2 hover:border-primary h-full"
-                >
-                  <CardContent className="p-0">
-                    <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <IconComponent className="w-10 h-10 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-bold text-primary mb-4">{value.title}</h3>
-                    <p className="text-foreground leading-relaxed">{value.description}</p>
-                  </CardContent>
-                </Card>
-              )
-            })}
+          <div className="max-w-6xl mx-auto">
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value) => (
+                <ValueCard key={value.title} value={value} />
+              ))}
+            </div>
+            <div className="md:hidden">
+              <ValuesCarousel values={values} />
+            </div>
           </div>
         </div>
       </section>

@@ -85,56 +85,64 @@ export default function NewsEventsPage() {
       name: "Bangalore Royals",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_af21a59b551f412994e972b70a1715f9~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_af21a59b551f412994e972b70a1715f9~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #ffd700 0%, #6a1b9a 100%)"
     },
     {
       id: 2,
       name: "Davangere Lions",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_fc9f5b6108cf4773b3da6de7d5dca454~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_fc9f5b6108cf4773b3da6de7d5dca454~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #ff9800 0%, #ffffff 100%)"
     },
     {
       id: 3,
       name: "Hubli Eagles",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_9ebf9975514a4b6e90bd08fb54f2ec75~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_9ebf9975514a4b6e90bd08fb54f2ec75~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #d32f2f 0%, #ffffff 100%)"
     },
     {
       id: 4,
       name: "Mysore Kings",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_972e6f640f824e7ebdef41504966c92a~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_972e6f640f824e7ebdef41504966c92a~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #6a1b9a 0%, #ffeb3b 100%)"
     },
     {
       id: 5,
       name: "Belgaum Bulls",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_f32f1b07fe06429fa3fece8bdbfc2a23~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_f32f1b07fe06429fa3fece8bdbfc2a23~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #d32f2f 0%, #81d4fa 100%)"
     },
     {
       id: 6,
       name: "Shimoga Tigers",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_30824fa229814b02b6339507e0316358~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_30824fa229814b02b6339507e0316358~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #ff9800 0%, #c8e6c9 100%)"
     },
     {
       id: 7,
       name: "Kolar Warriors",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_af21a59b551f412994e972b70a1715f9~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_cc26d35284334d8b9e6a30224210e314~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #2e7d32 0%, #ffffff 100%)"
     },
     {
       id: 8,
       name: "Bagalkote Cheetahs",
       status: "Available",
       registrationFee: "₹5,000",
-      logo: "https://static.wixstatic.com/media/0dd563_fc9f5b6108cf4773b3da6de7d5dca454~mv2.jpeg"
+      logo: "https://static.wixstatic.com/media/0dd563_79a468fd29584056872b0b781c71246e~mv2.jpeg",
+      gradient: "linear-gradient(135deg, #6a1b9a 0%, #ff8f00 100%)"
     }
   ]
 
@@ -184,8 +192,8 @@ export default function NewsEventsPage() {
         </div>
         <div className="relative z-10 container mx-auto px-6 text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">News & Events</h1>
-          <p className="text-xl text-secondary mb-8">
-            Register your team and book tickets for the ultimate kabaddi experience
+          <p className="text-xl text-white mb-8">
+            Register your team or book tickets to witness the most exciting kabaddi action in Karnataka
           </p>
         </div>
       </section>
@@ -195,7 +203,7 @@ export default function NewsEventsPage() {
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Team Registration</h2>
-            <p className="text-xl text-foreground">Choose your team slot and register for KKPL 2025</p>
+            <p className="text-xl text-foreground">Join the elite competition! Select your team slot and complete the registration process</p>
           </div>
 
           {/* Desktop/Tablet Grid View */}
@@ -203,25 +211,29 @@ export default function NewsEventsPage() {
             {teams.map((team) => (
               <Dialog key={`desktop-${team.id}`}>
                 <DialogTrigger asChild>
-                  <Card className="cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-2 hover:border-primary">
-                    <CardContent className="p-6 text-center">
-                      <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                        <Image 
-                          src={team.logo} 
-                          alt={`${team.name} logo`} 
-                          width={64} 
-                          height={64} 
+                  <Card
+                    className="relative overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-white"
+                    style={{ background: team.gradient }}
+                  >
+                    <div className="absolute inset-0 bg-white/15 backdrop-blur-md" />
+                    <div className="absolute inset-0 bg-white/10 mix-blend-overlay" />
+                    <CardContent className="relative z-10 p-6 text-center">
+                      <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                        <Image
+                          src={team.logo}
+                          alt={`${team.name} logo`}
+                          width={64}
+                          height={64}
                           className="w-full h-full object-cover"
-                          unoptimized={true}
                         />
                       </div>
-                      <h3 className="text-xl font-bold text-primary mb-2">{team.name}</h3>
-                      <p className="text-foreground mb-2">Status: {team.status}</p>
-                      <p className="text-blue font-semibold">{team.registrationFee}</p>
+                      <h3 className="text-xl font-bold text-white mb-2">{team.name}</h3>
+                      <p className="text-white/80 mb-2">Status: {team.status}</p>
+                      <p className="text-white font-semibold">{team.registrationFee}</p>
                     </CardContent>
                   </Card>
                 </DialogTrigger>
-                <DialogContent className="max-w-2xl">
+                <DialogContent className="sm:max-w-[500px]">
                   <DialogHeader>
                     <DialogTitle className="text-2xl font-bold text-primary">Register for {team.name}</DialogTitle>
                   </DialogHeader>
@@ -322,25 +334,29 @@ export default function NewsEventsPage() {
                 <div key={`mobile-${team.id}`} className="w-full flex-shrink-0 px-4">
                   <Dialog>
                     <DialogTrigger asChild>
-                      <Card className="cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-2 hover:border-primary">
-                        <CardContent className="p-6 text-center">
-                          <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
-                            <Image 
-                              src={team.logo} 
-                              alt={`${team.name} logo`} 
-                              width={64} 
-                              height={64} 
+                      <Card
+                        className="relative overflow-hidden cursor-pointer hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-white"
+                        style={{ background: team.gradient }}
+                      >
+                        <div className="absolute inset-0 bg-white/15 backdrop-blur-md" />
+                        <div className="absolute inset-0 bg-white/10 mix-blend-overlay" />
+                        <CardContent className="relative z-10 p-6 text-center">
+                          <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                            <Image
+                              src={team.logo}
+                              alt={`${team.name} logo`}
+                              width={64}
+                              height={64}
                               className="w-full h-full object-cover"
-                              unoptimized={true}
                             />
                           </div>
-                          <h3 className="text-xl font-bold text-primary mb-2">{team.name}</h3>
-                          <p className="text-foreground mb-2">Status: {team.status}</p>
-                          <p className="text-blue font-semibold">{team.registrationFee}</p>
+                          <h3 className="text-xl font-bold text-white mb-2">{team.name}</h3>
+                          <p className="text-white/80 mb-2">Status: {team.status}</p>
+                          <p className="text-white font-semibold">{team.registrationFee}</p>
                         </CardContent>
                       </Card>
                     </DialogTrigger>
-                    <DialogContent className="max-w-2xl">
+                    <DialogContent className="sm:max-w-[425px]">
                       <DialogHeader>
                         <DialogTitle className="text-2xl font-bold text-primary">Register for {team.name}</DialogTitle>
                       </DialogHeader>
@@ -464,8 +480,8 @@ export default function NewsEventsPage() {
       <section className="py-20 bg-gradient-to-r from-blue/10 to-secondary/10">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Book Your Tickets</h2>
-            <p className="text-xl text-foreground">Experience the thrill of kabaddi live!</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Buy Tickets to Witness the Real Game</h2>
+            <p className="text-xl text-foreground">Experience the thrill of live kabaddi action at these premier venues across Karnataka</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
