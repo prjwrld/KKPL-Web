@@ -21,29 +21,6 @@ export const metadata: Metadata = {
   title: "KKPL - Karnataka Kabaddi Pro League",
   description: "Where Strength Meets Spirit - Karnataka's Premier Kabaddi Tournament",
   generator: "v0.app",
-  metadataBase: new URL("https://www.kkplkabaddi.com"),
-  openGraph: {
-    title: "KKPL - Karnataka Kabaddi Pro League",
-    description: "Where Strength Meets Spirit - Karnataka's Premier Kabaddi Tournament",
-    url: "https://www.kkplkabaddi.com",
-    siteName: "KKPL - Karnataka Kabaddi Pro League",
-    images: [
-      {
-        url: "https://static.wixstatic.com/media/0dd563_8ac0476e2e784045aec6b8d65bf3bb9a~mv2.png",
-        width: 1200,
-        height: 630,
-        alt: "KKPL – Karnataka Kabaddi Pro League",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "KKPL - Karnataka Kabaddi Pro League",
-    description: "Where Strength Meets Spirit - Karnataka's Premier Kabaddi Tournament",
-    images: ["https://static.wixstatic.com/media/0dd563_8ac0476e2e784045aec6b8d65bf3bb9a~mv2.png"],
-  },
   icons: {
     icon: [
       {
