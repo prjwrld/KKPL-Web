@@ -275,7 +275,7 @@ export default function HomePage() {
                       {teams.slice(slideIndex * cardsPerSlide, (slideIndex + 1) * cardsPerSlide).map((team) => (
                         <Card
                           key={team.name}
-                          className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white rounded-xl shadow-md"
+                          className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-[#0A0E3F] text-white rounded-xl shadow-md border border-[#39FF14]/30"
                         >
                           <CardContent className="p-0">
                             <div className="relative w-full h-48">
@@ -286,9 +286,9 @@ export default function HomePage() {
                                 className="object-cover"
                               />
                             </div>
-                            <div className="p-6 bg-white">
-                              <h3 className="text-xl font-bold text-primary mb-2">{team.name}</h3>
-                              <p className="text-muted-foreground">Professional kabaddi team ready for competition</p>
+                            <div className="p-6">
+                              <h3 className="text-xl font-bold text-[#FF1E56] mb-2">{team.name}</h3>
+                              <p className="text-white/80">Professional kabaddi team ready for competition</p>
                             </div>
                           </CardContent>
                         </Card>
@@ -319,7 +319,7 @@ export default function HomePage() {
             <Link href="/news-events">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-primary to-secondary text-white hover:from-primary/90 hover:to-secondary/90 text-xl px-8 py-4 rounded-lg font-bold transition-all duration-300 hover:shadow-lg"
+                className="bg-[#39FF14] text-[#0A0E3F] hover:bg-[#2fd10f] text-xl px-8 py-4 rounded-lg font-bold transition-all duration-300 hover:shadow-lg"
               >
                 Register Now
               </Button>
