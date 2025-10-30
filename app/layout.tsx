@@ -76,9 +76,7 @@ export const metadata: Metadata = {
     title: "KKPL – Karnataka Kabaddi Pro League | Official Site",
     description:
       "KKPL is Karnataka’s premier kabaddi tournament. Teams, schedules, tickets, news, and player registrations—all in one place.",
-    images: [
-      "https://static.wixstatic.com/media/0dd563_8ac0476e2e784045aec6b8d65bf3bb9a~mv2.png",
-    ],
+    images: ["https://static.wixstatic.com/media/0dd563_8ac0476e2e784045aec6b8d65bf3bb9a~mv2.png"],
   },
 
   icons: {
@@ -111,10 +109,7 @@ export const metadata: Metadata = {
         sizes: "180x180",
       },
     ],
-  },,
-
-  // (Optional) Add this if you verify domain with Search Console later
-  // verification: { google: "PASTE_SEARCH_CONSOLE_VERIFICATION_CODE" }
+  },
     generator: 'v0.app'
 }
 
