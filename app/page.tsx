@@ -26,25 +26,24 @@ export default function HomePage() {
 
   // Hero Section
   const HeroSection = () => {
-    const imageSrc = isMobile 
-      ? "https://static.wixstatic.com/media/0dd563_57a06b3197d944c984bc0b4132a5db48~mv2.png"
-      : "https://static.wixstatic.com/media/0dd563_89feb6b7bec14a14a4d2d4bea4a65e8a~mv2.png";
+    const backgroundImage = isMobile
+      ? "https://static.wixstatic.com/media/0dd563_d38e69dcbf894292b3432830269253b6~mv2.png"
+      : "https://static.wixstatic.com/media/0dd563_aeb334c3c9784595ac087d13c012da3d~mv2.png";
+    const backgroundSize = isMobile ? "contain" : "cover";
 
     return (
       <div
-        className="w-full min-h-[260px] bg-white flex items-center justify-center px-2 py-4 md:px-4"
+        className="w-full min-h-[260px] flex items-center justify-center px-2 py-4 md:px-4 bg-white"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          transition: "background-size 0.6s ease-in-out, background-position 0.6s ease-in-out",
+        }}
       >
         <div className="w-full max-w-7xl mx-auto">
-          <div className="relative w-full h-[280px] md:h-[380px]">
-            <Image
-              src={imageSrc}
-              alt="KKPL Logo"
-              fill
-              className="object-contain p-1 md:p-2"
-              priority
-              sizes="(max-width: 1080px) 100vw, 95vw"
-            />
-          </div>
+          <div className="relative w-full h-[280px] md:h-[380px]" />
         </div>
       </div>
     );
@@ -177,25 +176,16 @@ export default function HomePage() {
       <HeroSection />
       
       {/* Hero Banner */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden bg-white">
-        <div className="absolute inset-0 w-full h-full">
-          <Image
-            src={heroBannerImage}
-            alt="KKPL Coming Soon - Kabaddi players in action"
-            fill
-            className="object-contain"
-            priority
-            sizes="100vw"
-            style={{
-              objectPosition: "center",
-              width: "100%",
-              height: "100%",
-              margin: 0,
-              padding: 0,
-            }}
-          />
-        </div>
-
+      <section className="relative w-full bg-white overflow-hidden">
+        <Image
+          src={heroBannerImage}
+          alt="KKPL Coming Soon - Kabaddi players in action"
+          width={1920}
+          height={1080}
+          className="w-full h-auto"
+          priority
+          sizes="100vw"
+        />
       </section>
 
       {/* Introduction & Vision */}
