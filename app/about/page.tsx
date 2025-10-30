@@ -115,11 +115,7 @@ function ValuesCarousel({ values }: { values: Value[] }) {
   })
 
   const valueSlides = useMemo(() => {
-    const slides: Value[][] = []
-    for (let i = 0; i < values.length; i += 2) {
-      slides.push(values.slice(i, i + 2))
-    }
-    return slides
+    return values.map((value) => [value])
   }, [values])
 
   const scrollNext = useCallback(() => {
@@ -152,7 +148,7 @@ function ValuesCarousel({ values }: { values: Value[] }) {
         <div className="flex -mx-2">
           {valueSlides.map((slide, index) => (
             <div key={index} className="flex-[0_0_100%] px-2">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4">
                 {slide.map((value) => (
                   <ValueCard key={value.title} value={value} />
                 ))}
@@ -337,12 +333,12 @@ export default function AboutPage() {
           </div>
 
           <div className="max-w-6xl mx-auto">
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value) => (
                 <ValueCard key={value.title} value={value} />
               ))}
             </div>
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <ValuesCarousel values={values} />
             </div>
           </div>
