@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Trophy, Target, Users, Calendar, Ticket, MapPin, Clock, Award, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -141,17 +141,32 @@ export default function HomePage() {
     { title: "3 Locations", subtitle: "Across Karnataka", icon: MapPin },
   ]
 
-  const sponsors = [
-    "https://static.wixstatic.com/media/0dd563_02234768b7b441eaae9a08821581f820~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_0f51aed568bf45bca778cea60e7c7fd3~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_a57f7a08c5e1454b88cf9e6cfe890595~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_212d965c8de54ed1883f077de5502b03~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_3d40154e318a45328a72ef0c7f16c2ad~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_5a2a078ddf93416785b6be2507ccbcf9~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_2639aec7b1e74a83a12146438fd4a70f~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_22584358a121418f86a3cb8f983cf16f~mv2.png",
-    "https://static.wixstatic.com/media/0dd563_c1e5e6c069b94dba9ddad9d021cdde86~mv2.png",
-  ]
+  const sponsors = useMemo(
+    () => [
+      "https://static.wixstatic.com/media/0dd563_02234768b7b441eaae9a08821581f820~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_0f51aed568bf45bca778cea60e7c7fd3~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_a57f7a08c5e1454b88cf9e6cfe890595~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_212d965c8de54ed1883f077de5502b03~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_3d40154e318a45328a72ef0c7f16c2ad~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_5a2a078ddf93416785b6be2507ccbcf9~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_2639aec7b1e74a83a12146438fd4a70f~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_22584358a121418f86a3cb8f983cf16f~mv2.png",
+      "https://static.wixstatic.com/media/0dd563_c1e5e6c069b94dba9ddad9d021cdde86~mv2.png",
+    ],
+    []
+  )
+
+  useEffect(() => {
+    const styleId = "sponsor-marquee-keyframes"
+    if (!document.getElementById(styleId)) {
+      const style = document.createElement("style")
+      style.id = styleId
+      style.innerHTML = `@keyframes sponsor-marquee {0% { transform: translateX(0); }100% { transform: translateX(-50%); }}`
+      document.head.appendChild(style)
+    }
+  }, [])
+
+  const marqueeLogos = useMemo(() => [...sponsors, ...sponsors], [sponsors])
 
   return (
     <div className="min-h-screen">
@@ -515,24 +530,27 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-20 bg-gradient-to-r from-muted/50 to-background">
+      <section className="py-16 bg-primary/5">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Our Partners & Sponsors</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto text-justify">
-              Proud to be supported by leading organizations who believe in promoting sports excellence.
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Our Partners</h2>
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+              Proudly supported by leading organizations committed to growing Kabaddi in Karnataka.
             </p>
           </div>
 
           <div className="relative overflow-hidden">
-            <div className="flex gap-12 items-center animate-scroll">
-              {[...sponsors, ...sponsors, ...sponsors].map((sponsor, index) => (
+            <div
+              className="flex gap-12 items-center"
+              style={{ animation: "sponsor-marquee 20s linear infinite", width: "max-content", willChange: "transform" }}
+            >
+              {marqueeLogos.map((logo, index) => (
                 <div
-                  key={`${sponsor}-${index}`}
+                  key={`${logo}-${index}`}
                   className="flex-shrink-0 w-56 h-32 flex items-center justify-center bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <Image
-                    src={sponsor || "/placeholder.svg"}
+                    src={logo}
                     alt="Sponsor logo"
                     width={160}
                     height={80}
