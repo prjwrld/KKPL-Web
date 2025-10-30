@@ -18,9 +18,69 @@ const raleway = Raleway({
 })
 
 export const metadata: Metadata = {
-  title: "KKPL - Karnataka Kabaddi Pro League",
-  description: "Where Strength Meets Spirit - Karnataka's Premier Kabaddi Tournament",
-  generator: "v0.app",
+  // Core SEO
+  metadataBase: new URL("https://www.kkplkabaddi.com"),
+  title: "KKPL – Karnataka Kabaddi Pro League | Official Site",
+  description:
+    "KKPL is Karnataka’s premier kabaddi tournament. Teams, schedules, tickets, news, and player registrations—all in one place.",
+  keywords: [
+    "KKPL",
+    "Karnataka Kabaddi Pro League",
+    "Kabaddi Karnataka",
+    "Kabaddi tournament",
+    "Kabaddi tickets",
+    "Kabaddi schedule",
+    "Kabaddi teams",
+    "Mysuru kabaddi",
+    "Bengaluru kabaddi",
+    "state level kabaddi",
+  ],
+  alternates: {
+    canonical: "https://www.kkplkabaddi.com/",
+  },
+
+  // Crawling directives
+  robots: {
+    index: true,
+    follow: true,
+    // Helpful for Google
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+
+  // Keep your existing OG/Twitter (you can leave as-is or update image later)
+  openGraph: {
+    type: "website",
+    url: "https://www.kkplkabaddi.com",
+    siteName: "KKPL – Karnataka Kabaddi Pro League",
+    title: "KKPL – Karnataka Kabaddi Pro League | Official Site",
+    description:
+      "KKPL is Karnataka’s premier kabaddi tournament. Teams, schedules, tickets, news, and player registrations—all in one place.",
+    images: [
+      {
+        url: "https://static.wixstatic.com/media/0dd563_8ac0476e2e784045aec6b8d65bf3bb9a~mv2.png",
+        width: 1200,
+        height: 630,
+        alt: "KKPL – Karnataka Kabaddi Pro League",
+      },
+    ],
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KKPL – Karnataka Kabaddi Pro League | Official Site",
+    description:
+      "KKPL is Karnataka’s premier kabaddi tournament. Teams, schedules, tickets, news, and player registrations—all in one place.",
+    images: [
+      "https://static.wixstatic.com/media/0dd563_8ac0476e2e784045aec6b8d65bf3bb9a~mv2.png",
+    ],
+  },
+
   icons: {
     icon: [
       {
@@ -51,7 +111,11 @@ export const metadata: Metadata = {
         sizes: "180x180",
       },
     ],
-  },
+  },,
+
+  // (Optional) Add this if you verify domain with Search Console later
+  // verification: { google: "PASTE_SEARCH_CONSOLE_VERIFICATION_CODE" }
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
