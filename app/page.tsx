@@ -338,13 +338,13 @@ export default function HomePage() {
           {/* Desktop/Tablet Grid View */}
           <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {tournamentStages.map((stage, index) => (
-              <Card key={stage.id} className="text-center p-8 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border-0">
+              <Card key={stage.id} className="text-center p-8 bg-[#0A0E3F] text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#FF1E56]/30">
                 <CardContent className="p-0">
-                  <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <stage.icon className="w-8 h-8 text-primary" />
+                  <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <stage.icon className="w-8 h-8 text-[#39FF14]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-primary mb-3">{stage.title}</h3>
-                  <p className="text-muted-foreground text-sm">{stage.description}</p>
+                  <h3 className="text-2xl font-bold text-[#FF1E56] mb-3">{stage.title}</h3>
+                  <p className="text-white/80 text-sm">{stage.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -368,13 +368,13 @@ export default function HomePage() {
             >
               {tournamentStages.map((stage) => (
                 <div key={stage.id} className="w-full flex-shrink-0 px-4">
-                  <Card className="text-center p-8 bg-white rounded-xl shadow-md border-0">
+                  <Card className="text-center p-8 bg-[#0A0E3F] text-white rounded-xl shadow-md border border-[#FF1E56]/30">
                     <CardContent className="p-0">
-                      <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <stage.icon className="w-8 h-8 text-primary" />
+                      <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <stage.icon className="w-8 h-8 text-[#39FF14]" />
                       </div>
-                      <h3 className="text-2xl font-bold text-primary mb-3">{stage.title}</h3>
-                      <p className="text-muted-foreground text-sm">{stage.description}</p>
+                      <h3 className="text-2xl font-bold text-[#FF1E56] mb-3">{stage.title}</h3>
+                      <p className="text-white/80 text-sm">{stage.description}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -408,14 +408,14 @@ export default function HomePage() {
             {tournamentStats.map((stat, index) => (
               <Card
                 key={index}
-                className="text-center p-8 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border-0"
+                className="text-center p-8 bg-[#0A0E3F] text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#FF1E56]/30"
               >
                 <CardContent className="p-0">
-                  <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <stat.icon className="w-8 h-8 text-primary" />
+                  <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <stat.icon className="w-8 h-8 text-[#39FF14]" />
                   </div>
-                  <h3 className="text-2xl font-bold text-primary mb-3">{stat.title}</h3>
-                  <p className="text-muted-foreground text-sm">{stat.subtitle}</p>
+                  <h3 className="text-2xl font-bold text-[#FF1E56] mb-3">{stat.title}</h3>
+                  <p className="text-white/80 text-sm">{stat.subtitle}</p>
                 </CardContent>
               </Card>
             ))}
@@ -448,14 +448,14 @@ export default function HomePage() {
                       {items.map((stat, index) => (
                         <Card 
                           key={groupIndex * 2 + index}
-                          className="text-center p-6 bg-white rounded-xl shadow-md border-0"
+                          className="text-center p-6 bg-[#0A0E3F] text-white rounded-xl shadow-md border border-[#FF1E56]/30"
                         >
                           <CardContent className="p-0">
-                            <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-                              <stat.icon className="w-6 h-6 text-primary" />
+                            <div className="bg-white/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                              <stat.icon className="w-6 h-6 text-[#39FF14]" />
                             </div>
-                            <h3 className="text-xl font-bold text-primary mb-2">{stat.title}</h3>
-                            <p className="text-muted-foreground text-xs">{stat.subtitle}</p>
+                            <h3 className="text-xl font-bold text-[#FF1E56] mb-2">{stat.title}</h3>
+                            <p className="text-white/80 text-xs">{stat.subtitle}</p>
                           </CardContent>
                         </Card>
                       ))}
