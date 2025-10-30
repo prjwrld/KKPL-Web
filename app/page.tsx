@@ -210,14 +210,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 to-blue/10">
+      {/* Introduction & Vision */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6 max-w-7xl">
-          <div className="px-4">
+          <div className="px-4 mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8 text-center">
               Karnataka Kabaddi Pro League
             </h2>
-            <p className="text-lg md:text-xl text-foreground leading-relaxed max-w-4xl mx-auto text-justify hyphens-auto">
+            <p className="text-lg md:text-xl text-black leading-relaxed max-w-4xl mx-auto text-justify hyphens-auto">
               Kabaddi is a traditional Indian rural sport, and the Karnataka Kabaddi Pro League (KKPL) is the vision of
               Dr. C. Honnappa Gowda. The league was created to provide a platform for talented players from humble
               backgrounds across Karnataka. Many families focus on seeing their children become doctors or engineers,
@@ -226,19 +226,13 @@ export default function HomePage() {
               sports and realize their full potential as true professionals.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* Vision & Mission */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             <div className="text-center">
               <div className="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Target className="w-8 h-8 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-primary mb-6">Our Vision</h2>
-              <p className="text-base text-foreground leading-relaxed max-w-md mx-auto text-justify hyphens-auto">
+              <p className="text-base text-black leading-relaxed max-w-md mx-auto text-justify hyphens-auto">
                 To ignite the spirit of Kabaddi in every corner of Karnataka — empowering the youth to dream big, play
                 bold, and rise as champions with pride and passion.
               </p>
@@ -249,7 +243,7 @@ export default function HomePage() {
                 <Trophy className="w-8 h-8 text-white" />
               </div>
               <h2 className="text-3xl font-bold text-primary mb-6">Our Mission</h2>
-              <p className="text-base text-foreground leading-relaxed max-w-md mx-auto text-justify hyphens-auto">
+              <p className="text-base text-black leading-relaxed max-w-md mx-auto text-justify hyphens-auto">
                 To create a powerful platform where young and talented Kabaddi players can showcase their skills, chase
                 their dreams, and turn their passion into a profession. KKPL is committed to celebrating the energy,
                 strength, and unity of the game — building a new generation of fearless athletes who carry the legacy of
@@ -261,11 +255,11 @@ export default function HomePage() {
       </section>
 
       {/* Players Section / Join the League */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-[#1A237E] text-white">
         <div className="container mx-auto px-6 max-w-7xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">Join the League</h2>
-            <p className="text-xl text-foreground mb-8 text-justify max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Join the League</h2>
+            <p className="text-xl text-white/90 mb-8 text-justify max-w-3xl mx-auto">
               Are you ready to compete at the highest level? Register your team now and be part of Karnataka's most
               exciting kabaddi championship. Limited spots available.
             </p>
@@ -357,7 +351,7 @@ export default function HomePage() {
       </section>
 
       {/* Tournament Format */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">Tournament Format</h2>
@@ -425,10 +419,10 @@ export default function HomePage() {
       </section>
 
       {/* Tournament Schedule */}
-      <section className="py-20 bg-muted">
+      <section className="py-20 bg-[#1A237E] text-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">Tournament Schedule</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8">Tournament Schedule</h2>
           </div>
 
           {/* Desktop/Tablet Grid View */}
@@ -509,14 +503,14 @@ export default function HomePage() {
       </section>
 
       {/* Experience Live Action */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 to-blue/10">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center">
             <div className="bg-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-8">
               <Ticket className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">Experience Live Action</h2>
-            <p className="text-lg text-foreground mb-12 max-w-3xl mx-auto text-justify">
+            <p className="text-lg text-black mb-12 max-w-3xl mx-auto text-justify">
               Feel the energy, hear the crowd, and witness kabaddi at its finest. Secure your seats now for an
               unforgettable sporting experience.
             </p>
@@ -530,11 +524,11 @@ export default function HomePage() {
       </section>
 
       {/* Partners Section */}
-      <section className="py-16 bg-primary/5">
+      <section className="py-16 bg-[#1A237E] text-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">Our Partners</h2>
-            <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Our Partners</h2>
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               Proudly supported by leading organizations committed to growing Kabaddi in Karnataka.
             </p>
           </div>

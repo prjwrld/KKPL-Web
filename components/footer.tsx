@@ -4,7 +4,7 @@ import { Facebook, Instagram, Youtube, Twitter } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="bg-[#1A237E] text-white border-t border-[#FF1E56]/20 relative overflow-hidden">
+    <footer className="bg-[#0A0E3F] text-white border-t border-[#FF1E56]/20 relative overflow-hidden">
       <div className="absolute inset-0 bg-pattern-dots opacity-30 pointer-events-none"></div>
 
       <div className="container mx-auto px-4 py-12 relative z-10">
