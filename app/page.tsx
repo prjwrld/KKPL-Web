@@ -27,16 +27,16 @@ export default function HomePage() {
   // Hero Section
   const HeroSection = () => {
     const imageSrc = isMobile 
-      ? "https://static.wixstatic.com/media/0dd563_1f675019478347d4b830203c8bf23ef7~mv2.png"
-      : "https://static.wixstatic.com/media/0dd563_62f98381f5c045e4b1d8410fd6105548~mv2.png";
+      ? "https://static.wixstatic.com/media/0dd563_57a06b3197d944c984bc0b4132a5db48~mv2.png"
+      : "https://static.wixstatic.com/media/0dd563_89feb6b7bec14a14a4d2d4bea4a65e8a~mv2.png";
 
     return (
       <div
-        className="w-full min-h-[350px] bg-cover bg-center bg-no-repeat flex items-center justify-center px-2 py-4 md:px-4"
+        className="w-full min-h-[260px] bg-cover bg-center bg-no-repeat flex items-center justify-center px-2 py-4 md:px-4"
         style={{ backgroundImage: "url('https://static.wixstatic.com/media/0dd563_024d9a9078b3430d8ec5310fcc132c8c~mv2.jpg')" }}
       >
         <div className="w-full max-w-7xl mx-auto">
-          <div className="relative w-full h-[400px] md:h-[500px]">
+          <div className="relative w-full h-[280px] md:h-[380px]">
             <Image
               src={imageSrc}
               alt="KKPL Logo"
@@ -168,20 +168,24 @@ export default function HomePage() {
 
   const marqueeLogos = useMemo(() => [...sponsors, ...sponsors], [sponsors])
 
+  const heroBannerImage = isMobile
+    ? "https://static.wixstatic.com/media/0dd563_bc7cde818c974c0bbd18686df9471b9e~mv2.png"
+    : "https://static.wixstatic.com/media/0dd563_c223cb0514404ed3b84bd9d069306b70~mv2.png"
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <HeroSection />
       
       {/* Hero Banner */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-blue/90 z-10 opacity-[0.88]"></div>
           <Image
-            src="https://static.wixstatic.com/media/0dd563_6acc7fd586f14f7f84044e3d30b28514~mv2.jpeg"
+            src={heroBannerImage}
             alt="KKPL Coming Soon - Kabaddi players in action"
             fill
-            className="object-cover w-full h-full"
+            className="object-contain"
             priority
             sizes="100vw"
             style={{
@@ -194,20 +198,6 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="relative z-20 text-center text-white max-w-6xl mx-auto px-6 pt-32 pb-16 md:pt-48 md:pb-24">
-          <div className="backdrop-blur-sm bg-black/30 p-8 rounded-2xl">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">KKPL – Karnataka Kabaddi Pro League</h1>
-            <p className="text-2xl md:text-3xl mb-8 text-secondary font-semibold">Where Strength Meets Spirit</p>
-            <Link href="/news-events">
-              <Button
-                size="lg"
-                className="bg-secondary text-black hover:bg-secondary/90 text-xl px-8 py-4 rounded-lg font-bold transition-all hover:scale-105 transform"
-              >
-                Register Your Team
-              </Button>
-            </Link>
-          </div>
-        </div>
       </section>
 
       {/* Introduction & Vision */}
