@@ -24,12 +24,33 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "https://static.wixstatic.com/media/0dd563_f73a8b6b1c3f4902bc5b1b670e3f2c94~mv2.png",
+        url: "https://static.wixstatic.com/media/0dd563_335ffbb47d8b4bc4accfcb74aa189d32~mv2.png?v=2",
+        sizes: "16x16",
         type: "image/png",
       },
+      {
+        url: "https://static.wixstatic.com/media/0dd563_ae8c14905a7242ccb90bc5105d34e1dd~mv2.png?v=2",
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: "https://static.wixstatic.com/ficons/0dd563_5cf3d50871e844e49bc2446cd0e55e29~mv2.ico?v=2",
+        type: "image/x-icon",
+      },
     ],
-    shortcut: "https://static.wixstatic.com/media/0dd563_f73a8b6b1c3f4902bc5b1b670e3f2c94~mv2.png",
-    apple: "https://static.wixstatic.com/media/0dd563_f73a8b6b1c3f4902bc5b1b670e3f2c94~mv2.png",
+    shortcut: [
+      {
+        url: "https://static.wixstatic.com/ficons/0dd563_5cf3d50871e844e49bc2446cd0e55e29~mv2.ico?v=2",
+        type: "image/x-icon",
+      },
+    ],
+    apple: [
+      {
+        url: "https://static.wixstatic.com/media/0dd563_ce29b87610e04d0b8867ea554eba2d97~mv2.png?v=2",
+        type: "image/png",
+        sizes: "180x180",
+      },
+    ],
   },
 }
 
