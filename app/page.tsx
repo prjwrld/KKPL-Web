@@ -177,9 +177,8 @@ export default function HomePage() {
       <HeroSection />
       
       {/* Hero Banner */}
-      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden bg-white">
         <div className="absolute inset-0 w-full h-full">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/70 to-blue/70 z-10 opacity-60"></div>
           <Image
             src={heroBannerImage}
             alt="KKPL Coming Soon - Kabaddi players in action"
