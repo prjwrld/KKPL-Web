@@ -35,7 +35,6 @@ export function Navigation() {
       <div className="sticky top-0 z-50">
         {/* Marquee Banner */}
         <div className="bg-gradient-to-r from-purple-900 via-purple-800 to-purple-900 h-10 flex items-center overflow-hidden border-b border-purple-700/30 relative">
-          <span className="absolute left-0 text-2xl z-10 bg-purple-900 h-full flex items-center px-4">🎉</span>
           <div className="flex marquee-content">
             {[...Array(2)].map((_, groupIndex) => (
               <div key={groupIndex} className="flex gap-16 px-16">
