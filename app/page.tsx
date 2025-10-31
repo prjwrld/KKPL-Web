@@ -28,7 +28,7 @@ export default function HomePage() {
   // Hero Section
   const HeroSection = () => {
     const backgroundImage = isMobile
-      ? "https://static.wixstatic.com/media/0dd563_d38e69dcbf894292b3432830269253b6~mv2.png"
+      ? "https://static.wixstatic.com/media/0dd563_ade48b7a08214d39bcb424099370714a~mv2.jpg"
       : "https://static.wixstatic.com/media/0dd563_aeb334c3c9784595ac087d13c012da3d~mv2.png";
     const backgroundSize = isMobile ? "contain" : "cover";
 
