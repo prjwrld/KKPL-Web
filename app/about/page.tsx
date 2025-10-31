@@ -27,10 +27,35 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
     align: 'start',
     slidesToScroll: 1,
   })
+  const [isDesktop, setIsDesktop] = useState(false)
 
   const scrollNext = useCallback(() => {
     if (emblaApi) emblaApi.scrollNext()
   }, [emblaApi])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setIsDesktop(event.matches)
+    }
+
+    setIsDesktop(mediaQuery.matches)
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange)
+    } else {
+      mediaQuery.addListener(handleChange)
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', handleChange)
+      } else {
+        mediaQuery.removeListener(handleChange)
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (!emblaApi) return
@@ -41,6 +66,11 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
 
     return () => clearInterval(autoplay)
   }, [emblaApi, scrollNext])
+
+  const indicatorCount = useMemo(
+    () => Math.ceil(directors.length / (isDesktop ? 2 : 1)),
+    [directors.length, isDesktop],
+  )
 
   return (
     <div className="w-full px-4 lg:px-8">
@@ -86,13 +116,11 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-[#0A0E3F]/40 to-[#0A0E3F]/95" />
-                <CardContent className="relative z-10 flex h-full flex-col p-8 text-left">
-                  <div className="mt-auto space-y-4">
-                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tracking-tight">{director.name}</h3>
-                    <p className="text-blue font-semibold text-base sm:text-lg lg:text-xl border-l-4 border-primary pl-4">{director.designation}</p>
-                    <p className="text-foreground/90 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">{director.bio}</p>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-[#0A0E3F]/30 to-[#0A0E3F]/80" />
+                <CardContent className="relative z-10 flex min-h-full flex-col justify-end gap-4 p-8 text-left">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tracking-tight">{director.name}</h3>
+                  <p className="text-blue font-semibold text-base sm:text-lg lg:text-xl border-l-4 border-primary pl-4">{director.designation}</p>
+                  <p className="text-foreground/90 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">{director.bio}</p>
                 </CardContent>
               </Card>
             </div>
@@ -102,11 +130,11 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
       
       {/* Carousel Indicators */}
       <div className="flex justify-center gap-3 mt-10">
-        {Array.from({ length: Math.ceil(directors.length / 2) }).map((_, idx) => (
+        {Array.from({ length: indicatorCount }).map((_, idx) => (
           <button
             key={idx}
-            onClick={() => emblaApi?.scrollTo(idx * 2)}
-            className="w-4 h-4 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125 shadow-md"
+            onClick={() => emblaApi?.scrollTo(idx * (isDesktop ? 2 : 1))}
+            className="w-3 h-3 rounded-full bg-primary/40 hover:bg-primary transition-all duration-300 hover:scale-125 shadow-md"
             aria-label={`Go to slide ${idx + 1}`}
           />
         ))}
