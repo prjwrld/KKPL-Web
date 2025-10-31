@@ -49,9 +49,34 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
           {directors.map((director) => (
             <div
               key={director.id}
-              className="flex-[0_0_100%] md:flex-[0_0_50%] min-w-0 px-4"
+              className="flex-[0_0_100%] lg:flex-[0_0_50%] min-w-0 px-4"
             >
-              <Card className="group relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] h-full border-2 border-primary/10 bg-[#0A0E3F] py-0 aspect-[5/6]">
+              <Card className="lg:hidden p-0 gap-0 border-0 shadow-xl overflow-hidden bg-gradient-to-b from-[#0A0E3F]/95 via-[#080b31] to-[#03051a]">
+                <div className="flex flex-col sm:flex-row">
+                  <div className="relative w-full sm:w-1/2 h-72 sm:h-auto">
+                    <Image
+                      src={director.photo || "/placeholder.svg"}
+                      alt={`${director.name} - ${director.designation}`}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(min-width: 640px) 50vw, 100vw"
+                    />
+                  </div>
+                  <CardContent className="flex w-full sm:w-1/2 flex-col justify-center gap-4 p-6 sm:p-8 bg-[#0A0E3F] bg-opacity-80 backdrop-blur-xl border-t border-white/10 sm:border-t-0 sm:border-l text-left text-white">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#FF1E56] tracking-tight">
+                      {director.name}
+                    </h3>
+                    <p className="text-[#39FF14] font-semibold text-base sm:text-lg lg:text-xl border-l-4 border-[#39FF14] pl-4">
+                      {director.designation}
+                    </p>
+                    <p className="text-white/85 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">
+                      {director.bio}
+                    </p>
+                  </CardContent>
+                </div>
+              </Card>
+
+              <Card className="hidden lg:block group relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] h-full border-2 border-primary/10 bg-[#0A0E3F] py-0 aspect-[5/6]">
                 <div className="absolute inset-0 overflow-hidden">
                   <Image
                     src={director.photo || "/placeholder.svg"}
@@ -62,10 +87,12 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
                   />
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-[#0A0E3F]/40 to-[#0A0E3F]/95" />
-                <CardContent className="relative z-10 flex flex-1 flex-col justify-end gap-4 p-8">
-                  <h3 className="text-3xl font-bold text-primary tracking-tight">{director.name}</h3>
-                  <p className="text-blue font-semibold text-lg border-l-4 border-primary pl-4">{director.designation}</p>
-                  <p className="text-foreground/90 leading-relaxed text-base text-justify">{director.bio}</p>
+                <CardContent className="relative z-10 flex h-full flex-col p-8 text-left">
+                  <div className="mt-auto space-y-4">
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tracking-tight">{director.name}</h3>
+                    <p className="text-blue font-semibold text-base sm:text-lg lg:text-xl border-l-4 border-primary pl-4">{director.designation}</p>
+                    <p className="text-foreground/90 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">{director.bio}</p>
+                  </div>
                 </CardContent>
               </Card>
             </div>
