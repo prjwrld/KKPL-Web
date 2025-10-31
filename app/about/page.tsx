@@ -51,24 +51,21 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
               key={director.id}
               className="flex-[0_0_100%] md:flex-[0_0_50%] min-w-0 px-4"
             >
-              <Card className="overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] h-full border-2 border-primary/10 bg-white">
-                <CardContent className="p-0">
-                  <div className="flex flex-col h-full">
-                    <div className="relative h-80 w-full overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/20 z-10" />
-                      <Image
-                        src={director.photo || "/placeholder.svg"}
-                        alt={`${director.name} - ${director.designation}`}
-                        fill
-                        className="object-cover object-top hover:scale-110 transition-transform duration-700"
-                      />
-                    </div>
-                    <div className="p-8 flex-1 flex flex-col justify-center bg-gradient-to-br from-white to-primary/5">
-                      <h3 className="text-3xl font-bold text-primary mb-3 tracking-tight">{director.name}</h3>
-                      <p className="text-blue font-semibold mb-5 text-lg border-l-4 border-primary pl-4">{director.designation}</p>
-                      <p className="text-foreground/90 leading-relaxed text-base text-justify">{director.bio}</p>
-                    </div>
-                  </div>
+              <Card className="group relative overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] h-full border-2 border-primary/10 bg-[#0A0E3F] py-0 aspect-[5/6]">
+                <div className="absolute inset-0 overflow-hidden">
+                  <Image
+                    src={director.photo || "/placeholder.svg"}
+                    alt={`${director.name} - ${director.designation}`}
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-[#0A0E3F]/40 to-[#0A0E3F]/95" />
+                <CardContent className="relative z-10 flex flex-1 flex-col justify-end gap-4 p-8">
+                  <h3 className="text-3xl font-bold text-primary tracking-tight">{director.name}</h3>
+                  <p className="text-blue font-semibold text-lg border-l-4 border-primary pl-4">{director.designation}</p>
+                  <p className="text-foreground/90 leading-relaxed text-base text-justify">{director.bio}</p>
                 </CardContent>
               </Card>
             </div>
@@ -95,13 +92,13 @@ function ValueCard({ value }: { value: Value }) {
   const IconComponent = value.icon
 
   return (
-    <Card className="text-center p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-2 hover:border-primary h-full">
+    <Card className="flex flex-col gap-6 text-center p-8 bg-[#0A0E3F] text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-[#FF1E56]/30 h-full">
       <CardContent className="p-0">
-        <div className="bg-primary/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
-          <IconComponent className="w-10 h-10 text-primary" />
+        <div className="bg-white/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <IconComponent className="w-10 h-10 text-[#39FF14]" />
         </div>
-        <h3 className="text-xl font-bold text-primary mb-4">{value.title}</h3>
-        <p className="text-foreground leading-relaxed text-center">{value.description}</p>
+        <h3 className="text-2xl font-bold text-[#FF1E56] mb-3">{value.title}</h3>
+        <p className="text-white/80 leading-relaxed text-center">{value.description}</p>
       </CardContent>
     </Card>
   )
@@ -323,11 +320,11 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">Our Values</h2>
-            <p className="text-xl text-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-black max-w-3xl mx-auto">
               The principles that guide everything we do at KKPL
             </p>
           </div>
