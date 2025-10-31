@@ -17,6 +17,12 @@ export default function NewsEventsPage() {
   const [currentTeamSlide, setCurrentTeamSlide] = useState(0)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [currentVenueSlide, setCurrentVenueSlide] = useState(0)
+  const [venueTouchStart, setVenueTouchStart] = useState(0)
+  const [venueTouchEnd, setVenueTouchEnd] = useState(0)
+  const [currentNewsSlide, setCurrentNewsSlide] = useState(0)
+  const [newsTouchStart, setNewsTouchStart] = useState(0)
+  const [newsTouchEnd, setNewsTouchEnd] = useState(0)
 
   // Auto slide effect for mobile
   useEffect(() => {
@@ -46,6 +52,22 @@ export default function NewsEventsPage() {
     setCurrentTeamSlide(prev => (prev - 1 + teams.length) % teams.length)
   }
 
+  const nextVenueSlide = () => {
+    setCurrentVenueSlide(prev => (prev + 1) % venues.length)
+  }
+
+  const prevVenueSlide = () => {
+    setCurrentVenueSlide(prev => (prev - 1 + venues.length) % venues.length)
+  }
+
+  const nextNewsSlide = () => {
+    setCurrentNewsSlide((prev) => (prev + 1) % newsItems.length)
+  }
+
+  const prevNewsSlide = () => {
+    setCurrentNewsSlide((prev) => (prev - 1 + newsItems.length) % newsItems.length)
+  }
+
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX)
   }
@@ -60,6 +82,40 @@ export default function NewsEventsPage() {
     }
     if (touchStart - touchEnd < -50) {
       prevTeamSlide()
+    }
+  }
+
+  const handleVenueTouchStart = (e: React.TouchEvent) => {
+    setVenueTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleVenueTouchMove = (e: React.TouchEvent) => {
+    setVenueTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleVenueTouchEnd = () => {
+    if (venueTouchStart - venueTouchEnd > 50) {
+      nextVenueSlide()
+    }
+    if (venueTouchStart - venueTouchEnd < -50) {
+      prevVenueSlide()
+    }
+  }
+
+  const handleNewsTouchStart = (e: React.TouchEvent) => {
+    setNewsTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleNewsTouchMove = (e: React.TouchEvent) => {
+    setNewsTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleNewsTouchEnd = () => {
+    if (newsTouchStart - newsTouchEnd > 50) {
+      nextNewsSlide()
+    }
+    if (newsTouchStart - newsTouchEnd < -50) {
+      prevNewsSlide()
     }
   }
 
@@ -164,6 +220,33 @@ export default function NewsEventsPage() {
       location: "Nehru Maidan",
       capacity: "10,000",
       ticketPrice: "₹150",
+    },
+  ]
+
+  const newsItems = [
+    {
+      id: 1,
+      date: "December 11, 2024",
+      title: "KKPL 2025 Registration Opens",
+      description:
+        "Teams can now register for the upcoming Karnataka Kabaddi Pro League season.",
+      image: "/images/design-mode/0dd563_a4914e4e309a4e4684446f3eea0700c9~mv2.png",
+    },
+    {
+      id: 2,
+      date: "December 15, 2024",
+      title: "Venue Lineup Announced",
+      description:
+        "KKPL reveals three iconic stadiums set to host high-octane kabaddi clashes across Karnataka.",
+      image: "/images/design-mode/0dd563_a4914e4e309a4e4684446f3eea0700c9~mv2.png",
+    },
+    {
+      id: 3,
+      date: "December 20, 2024",
+      title: "Coaching Clinics for Teams",
+      description:
+        "Registered teams gain access to exclusive coaching sessions led by former national players.",
+      image: "/images/design-mode/0dd563_a4914e4e309a4e4684446f3eea0700c9~mv2.png",
     },
   ]
 
@@ -445,22 +528,6 @@ export default function NewsEventsPage() {
               ))}
             </div>
             
-            {/* Navigation Arrows */}
-            <button 
-              onClick={prevTeamSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-10"
-              aria-label="Previous team"
-            >
-              <ChevronLeft className="w-6 h-6 text-primary" />
-            </button>
-            <button 
-              onClick={nextTeamSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-md z-10"
-              aria-label="Next team"
-            >
-              <ChevronRight className="w-6 h-6 text-primary" />
-            </button>
-            
             {/* Navigation Dots */}
             <div className="flex justify-center mt-6 space-x-2">
               {teams.map((_, index) => (
@@ -484,9 +551,9 @@ export default function NewsEventsPage() {
             <p className="text-xl text-foreground">Experience the thrill of live kabaddi action at these premier venues across Karnataka</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
             {venues.map((venue) => (
-              <Dialog key={venue.name}>
+              <Dialog key={`desktop-venue-${venue.name}`}>
                 <DialogTrigger asChild>
                   <Card className="cursor-pointer hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border-2 hover:border-blue">
                     <CardContent className="p-0">
@@ -588,6 +655,130 @@ export default function NewsEventsPage() {
               </Dialog>
             ))}
           </div>
+
+          <div className="md:hidden relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentVenueSlide * 100}%)` }}
+              onTouchStart={handleVenueTouchStart}
+              onTouchMove={handleVenueTouchMove}
+              onTouchEnd={handleVenueTouchEnd}
+            >
+              {venues.map((venue) => (
+                <div key={`mobile-venue-${venue.name}`} className="w-full flex-shrink-0 px-4">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Card className="flex flex-col gap-6 text-center p-8 bg-[#0A0E3F] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#FF1E56]/30">
+                        <div className="relative w-full h-48 rounded-lg overflow-hidden border border-white/10">
+                          <Image
+                            src="/images/design-mode/0dd563_6b447a7a15444a0089bf54916ba2b588~mv2.png"
+                            alt={`${venue.name} stadium for kabaddi matches`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-center gap-2">
+                            <MapPin className="w-5 h-5 text-[#39FF14]" />
+                            <h3 className="text-2xl font-bold text-[#FF1E56]">{venue.name}</h3>
+                          </div>
+                          <p className="text-white/85">{venue.location}</p>
+                          <p className="text-white/70">Capacity: {venue.capacity}</p>
+                          <p className="text-[#39FF14] font-semibold text-lg">{venue.ticketPrice}</p>
+                        </div>
+                      </Card>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                      <DialogHeader>
+                        <DialogTitle className="text-2xl font-bold text-primary">Book Tickets for {venue.name}</DialogTitle>
+                      </DialogHeader>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <form onSubmit={handleTicketFormSubmit} className="space-y-4">
+                            <div>
+                              <Label htmlFor="ticketName">Full Name</Label>
+                              <Input
+                                id="ticketName"
+                                value={ticketFormData.name}
+                                onChange={(e) => setTicketFormData({ ...ticketFormData, name: e.target.value })}
+                                placeholder="Enter your full name"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor="ticketEmail">Email</Label>
+                              <Input
+                                id="ticketEmail"
+                                type="email"
+                                value={ticketFormData.email}
+                                onChange={(e) => setTicketFormData({ ...ticketFormData, email: e.target.value })}
+                                placeholder="Enter your email"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor="ticketPhone">Phone</Label>
+                              <Input
+                                id="ticketPhone"
+                                value={ticketFormData.phone}
+                                onChange={(e) => setTicketFormData({ ...ticketFormData, phone: e.target.value })}
+                                placeholder="Enter your phone number"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor="ticketCount">Number of Tickets</Label>
+                              <Input
+                                id="ticketCount"
+                                type="number"
+                                value={ticketFormData.ticketCount}
+                                onChange={(e) => setTicketFormData({ ...ticketFormData, ticketCount: e.target.value })}
+                                placeholder="Enter number of tickets"
+                                min="1"
+                                max="10"
+                                required
+                              />
+                            </div>
+                            <div>
+                              <Label htmlFor="matchDate">Preferred Match Date</Label>
+                              <Input
+                                id="matchDate"
+                                type="date"
+                                value={ticketFormData.matchDate}
+                                onChange={(e) => setTicketFormData({ ...ticketFormData, matchDate: e.target.value })}
+                                required
+                              />
+                            </div>
+                            <Button type="submit" className="w-full bg-blue text-white hover:bg-blue/90 font-bold">
+                              Book Tickets
+                            </Button>
+                          </form>
+                        </div>
+                        <div className="flex flex-col items-center justify-center bg-gray-50 rounded-lg p-6">
+                          <QrCode className="w-32 h-32 text-blue mb-4" />
+                          <h3 className="text-lg font-bold text-primary mb-2">Payment Details</h3>
+                          <p className="text-foreground text-center mb-2">Ticket Price: {venue.ticketPrice}</p>
+                          <p className="text-foreground text-center mb-4">Venue: {venue.location}</p>
+                          <p className="text-sm text-gray-600 text-center">Scan QR code or use UPI ID: kkpl-tickets@upi</p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-6 space-x-2">
+              {venues.map((_, index) => (
+                <button
+                  key={`venue-dot-${index}`}
+                  onClick={() => setCurrentVenueSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${currentVenueSlide === index ? 'bg-primary' : 'bg-gray-300'}`}
+                  aria-label={`Go to venue ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -598,17 +789,17 @@ export default function NewsEventsPage() {
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">Latest News & Updates</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((index) => (
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {newsItems.map((item) => (
               <Card
-                key={index}
+                key={`desktop-news-${item.id}`}
                 className="overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
               >
                 <CardContent className="p-0">
                   <div className="relative w-full h-48">
                     <Image
-                      src="/images/design-mode/0dd563_a4914e4e309a4e4684446f3eea0700c9~mv2.png"
-                      alt={`KKPL news update ${index}`}
+                      src={item.image}
+                      alt={item.title}
                       fill
                       className="object-cover"
                     />
@@ -616,12 +807,10 @@ export default function NewsEventsPage() {
                   <div className="p-6">
                     <div className="flex items-center mb-4">
                       <Calendar className="w-4 h-4 text-primary mr-2" />
-                      <span className="text-sm text-gray-600">December {10 + index}, 2024</span>
+                      <span className="text-sm text-gray-600">{item.date}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-primary mb-3">KKPL 2025 Registration Opens</h3>
-                    <p className="text-foreground mb-4">
-                      Teams can now register for the upcoming Karnataka Kabaddi Pro League season.
-                    </p>
+                    <h3 className="text-xl font-bold text-primary mb-3">{item.title}</h3>
+                    <p className="text-foreground mb-4">{item.description}</p>
                     <Button
                       variant="outline"
                       className="border-primary text-primary hover:bg-primary hover:text-white font-bold bg-transparent"
@@ -632,6 +821,56 @@ export default function NewsEventsPage() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="md:hidden relative overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${currentNewsSlide * 100}%)` }}
+              onTouchStart={handleNewsTouchStart}
+              onTouchMove={handleNewsTouchMove}
+              onTouchEnd={handleNewsTouchEnd}
+            >
+              {newsItems.map((item) => (
+                <div key={`mobile-news-${item.id}`} className="w-full flex-shrink-0 px-4">
+                  <Card className="flex flex-col gap-6 text-center p-8 bg-[#0A0E3F] text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#FF1E56]/30">
+                    <div className="relative w-full h-52 rounded-lg overflow-hidden border border-white/10">
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="space-y-3 text-left">
+                      <div className="flex items-center gap-2 text-white/70">
+                        <Calendar className="w-4 h-4 text-[#39FF14]" />
+                        <span className="text-sm">{item.date}</span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-[#FF1E56]">{item.title}</h3>
+                      <p className="text-white/85">{item.description}</p>
+                      <Button
+                        variant="outline"
+                        className="border-[#FF1E56] text-[#FF1E56] hover:bg-[#FF1E56] hover:text-white font-bold bg-transparent"
+                      >
+                        Read More
+                      </Button>
+                    </div>
+                  </Card>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex justify-center mt-6 space-x-2">
+              {newsItems.map((_, index) => (
+                <button
+                  key={`news-dot-${index}`}
+                  onClick={() => setCurrentNewsSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${currentNewsSlide === index ? 'bg-primary' : 'bg-gray-300'}`}
+                  aria-label={`Go to news ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -14,6 +14,7 @@ export default function HomePage() {
   const [cardsPerSlide, setCardsPerSlide] = useState(1)
   const [touchStart, setTouchStart] = useState(0)
   const [touchEnd, setTouchEnd] = useState(0)
+  const [stageSlide, setStageSlide] = useState(0)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -108,12 +109,12 @@ export default function HomePage() {
     return () => clearInterval(interval)
   }, [totalSlides])
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % Math.ceil(tournamentStages.length))
+  const nextStageSlide = () => {
+    setStageSlide((prev) => (prev + 1) % tournamentStages.length)
   }
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + tournamentStages.length) % tournamentStages.length)
+  const prevStageSlide = () => {
+    setStageSlide((prev) => (prev - 1 + tournamentStages.length) % tournamentStages.length)
   }
 
   const nextScheduleSlide = () => {
@@ -131,6 +132,16 @@ export default function HomePage() {
     { id: 4, title: "1 Title Winner", icon: Award, description: "The ultimate champion" },
   ]
 
+  useEffect(() => {
+    if (!isMobile) return
+
+    const interval = setInterval(() => {
+      setStageSlide((prev) => (prev + 1) % tournamentStages.length)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [isMobile, tournamentStages.length])
+
   const tournamentStats = [
     { title: "10 Days", subtitle: "Tournament Duration", icon: Calendar },
     { title: "32 Matches", subtitle: "Across All Teams", icon: Trophy },
@@ -138,6 +149,17 @@ export default function HomePage() {
     { title: "45 Minutes", subtitle: "Each Match Duration", icon: Clock },
     { title: "3 Locations", subtitle: "Across Karnataka", icon: MapPin },
   ]
+
+  useEffect(() => {
+    if (!isMobile) return
+
+    const groupCount = Math.ceil(tournamentStats.length / 2)
+    const interval = setInterval(() => {
+      setScheduleSlide((prev) => (prev + 1) % groupCount)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [isMobile, tournamentStats.length])
 
   const sponsors = useMemo(
     () => [
@@ -244,22 +266,6 @@ export default function HomePage() {
           </div>
 
           <div className="relative mb-12">
-            <button
-              onClick={prevSlide}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-primary text-primary hover:text-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 -ml-4"
-              aria-label="Previous teams"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-
-            <button
-              onClick={nextSlide}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-primary text-primary hover:text-white rounded-full p-3 shadow-md hover:shadow-lg transition-all duration-300 -mr-4"
-              aria-label="Next teams"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-
             <div className="overflow-hidden rounded-xl">
               <div
                 className="flex transition-transform duration-600 ease-in-out"
@@ -354,15 +360,15 @@ export default function HomePage() {
           <div className="md:hidden relative overflow-hidden max-w-md mx-auto">
             <div 
               className="flex transition-transform duration-300 ease-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              style={{ transform: `translateX(-${stageSlide * 100}%)` }}
               onTouchStart={(e) => setTouchStart(e.targetTouches[0].clientX)}
               onTouchMove={(e) => setTouchEnd(e.targetTouches[0].clientX)}
               onTouchEnd={() => {
                 if (touchStart - touchEnd > 50) {
-                  nextSlide();
+                  nextStageSlide();
                 }
                 if (touchStart - touchEnd < -50) {
-                  prevSlide();
+                  prevStageSlide();
                 }
               }}
             >
@@ -386,8 +392,8 @@ export default function HomePage() {
               {tournamentStages.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-colors ${currentSlide === index ? 'bg-primary' : 'bg-gray-300'}`}
+                  onClick={() => setStageSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-colors ${stageSlide === index ? 'bg-primary' : 'bg-gray-300'}`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
