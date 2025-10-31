@@ -119,7 +119,7 @@ function DirectorsCarousel({ directors }: { directors: Director[] }) {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-[#0A0E3F]/30 to-[#0A0E3F]/80" />
                 <CardContent className="relative z-10 flex min-h-full flex-col justify-end gap-4 p-8 text-left">
                   <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary tracking-tight">{director.name}</h3>
-                  <p className="text-blue font-semibold text-base sm:text-lg lg:text-xl border-l-4 border-primary pl-4">{director.designation}</p>
+                  <p className="text-[#39FF14] font-semibold text-base sm:text-lg lg:text-xl border-l-4 border-[#39FF14] pl-4">{director.designation}</p>
                   <p className="text-foreground/90 leading-relaxed text-sm sm:text-base lg:text-lg text-justify">{director.bio}</p>
                 </CardContent>
               </Card>
