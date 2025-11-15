@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Trophy, Target, Users, Calendar, Ticket, MapPin, Clock, Award, ChevronLeft, ChevronRight } from "lucide-react"
+import { Trophy, Target, Users, Calendar, Ticket, MapPin, Clock, Award, ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from "next/image"
 import { useState, useEffect, useMemo } from "react"
 
@@ -200,7 +200,7 @@ export default function HomePage() {
       {/* Hero Banner */}
       <section className="relative w-full bg-white overflow-hidden">
         <Image
-          src={heroBannerImage}
+          src={heroBannerImage || "/placeholder.svg"}
           alt="KKPL Coming Soon - Kabaddi players in action"
           width={1920}
           height={1080}
@@ -208,7 +208,7 @@ export default function HomePage() {
           priority
           sizes="100vw"
         />
-        <div className="hero-cta pointer-events-none absolute inset-x-0 flex justify-center">
+        <div className="hero-cta pointer-events-none absolute inset-x-0 bottom-8 md:bottom-12 lg:bottom-16 flex justify-center items-center">
           <Link href="/news-events" className="pointer-events-auto">
             <Button className="bg-[#39FF14] text-[#0A0E3F] hover:bg-[#2fd10f] text-xl md:text-2xl lg:text-3xl px-8 md:px-14 lg:px-16 py-4 md:py-5 lg:py-6 rounded-xl lg:rounded-2xl font-extrabold shadow-xl">
               Register Now
@@ -535,7 +535,7 @@ export default function HomePage() {
                   className="flex-shrink-0 w-56 h-32 flex items-center justify-center bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                   <Image
-                    src={logo}
+                    src={logo || "/placeholder.svg"}
                     alt="Sponsor logo"
                     width={160}
                     height={80}

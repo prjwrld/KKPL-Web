@@ -496,6 +496,12 @@
     bottom: clamp(3.5rem, 12vw, 7.5rem);
   }
 
+  @media (max-width: 767px) {
+    .hero-cta {
+      bottom: clamp(4rem, 14vw, 8rem);
+    }
+  }
+
   @media (min-width: 768px) {
     .hero-cta {
       bottom: clamp(4.5rem, 10vw, 9rem);
@@ -504,7 +510,7 @@
 
   @media (min-width: 1280px) {
     .hero-cta {
-      bottom: clamp(5rem, 8vw, 10rem);
+      bottom: clamp(4rem, 7vw, 8rem);
     }
   }
 }

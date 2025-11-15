@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
@@ -280,19 +281,23 @@ export default function GalleryPage() {
               your tickets today!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-primary text-white hover:bg-primary/90 text-lg px-8 py-4 rounded-lg font-bold"
-              >
-                Register Team
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-blue text-blue hover:bg-blue hover:text-white text-lg px-8 py-4 rounded-lg font-bold bg-transparent"
-              >
-                Buy Tickets
-              </Button>
+              <Link href="/news-events">
+                <Button
+                  size="lg"
+                  className="bg-primary text-white hover:bg-primary/90 text-lg px-8 py-4 rounded-lg font-bold"
+                >
+                  Register Team
+                </Button>
+              </Link>
+              <Link href="/news-events">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-blue text-blue hover:bg-blue hover:text-white text-lg px-8 py-4 rounded-lg font-bold bg-transparent"
+                >
+                  Buy Tickets
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

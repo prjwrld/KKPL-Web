@@ -1,0 +1,11 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/app/news-events/page": [
+      "static/media/f26d6d8170e57a33-s.p.1454d351.woff2",
+      "static/media/c825fd02acae0153-s.p.1692d83b.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}

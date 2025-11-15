@@ -71,26 +71,34 @@ export function Footer() {
             <h3 className="font-bold text-lg mb-4 text-[#39FF14]">Follow Us</h3>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61583282259791"
                 className="w-10 h-10 bg-[#FF1E56]/20 hover:bg-[#FF1E56] rounded-lg flex items-center justify-center transition-colors"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/kkpl.kabaddi/"
                 className="w-10 h-10 bg-[#39FF14]/20 hover:bg-[#39FF14] rounded-lg flex items-center justify-center transition-colors text-[#0A0E3F]"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://youtube.com/@kkplkabaddi?si=fCe4QxOgvHW4o_l_"
                 className="w-10 h-10 bg-[#FF1E56]/20 hover:bg-[#FF1E56] rounded-lg flex items-center justify-center transition-colors"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Youtube className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com/KkplKabaddi"
                 className="w-10 h-10 bg-[#39FF14]/20 hover:bg-[#39FF14] rounded-lg flex items-center justify-center transition-colors text-[#0A0E3F]"
+                target="_blank"
+                rel="noreferrer"
               >
                 <Twitter className="h-5 w-5" />
               </a>
