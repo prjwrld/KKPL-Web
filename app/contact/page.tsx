@@ -44,26 +44,23 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Phone Number",
-      details: ["+91 80 2234 5678", "+91 80 2234 5679"],
+      details: ["+91 92427 56690"],
       description: "Call us during business hours",
     },
     {
       icon: Mail,
       title: "Email Address",
-      details: ["info@kkpl.in", "support@kkpl.in"],
+      details: ["kkpl.kabaddi@gmail.com"],
       description: "Send us your queries anytime",
     },
     {
       icon: MapPin,
       title: "Office Address",
-      details: ["KKPL Headquarters", "Sports Complex, Bengaluru", "Karnataka - 560001"],
+      details: [
+        "Udaya Nagar, Sri Saraswathi Vidya Nikethan School Road, Opposite to Dharga",
+        "Dommasandra, Bengaluru - 562 125.",
+      ],
       description: "Visit our main office",
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      details: ["Monday - Friday: 9:00 AM - 6:00 PM", "Saturday: 9:00 AM - 2:00 PM"],
-      description: "We are here to help",
     },
   ]
 
@@ -71,19 +68,19 @@ export default function ContactPage() {
     {
       icon: Facebook,
       name: "Facebook",
-      url: "https://facebook.com/kkpl",
+      url: "https://www.facebook.com/profile.php?id=61583282259791",
       color: "hover:text-blue-600",
     },
     {
       icon: Instagram,
       name: "Instagram",
-      url: "https://instagram.com/kkpl",
+      url: "https://www.instagram.com/kkpl.kabaddi/",
       color: "hover:text-pink-600",
     },
     {
       icon: Youtube,
       name: "YouTube",
-      url: "https://youtube.com/kkpl",
+      url: "https://youtube.com/@kkplkabaddi?si=fCe4QxOgvHW4o_l_",
       color: "hover:text-red-600",
     },
   ]
