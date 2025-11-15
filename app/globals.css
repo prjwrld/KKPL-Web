@@ -491,4 +491,20 @@
   .bg-gradient-accent {
     background: linear-gradient(135deg, rgba(255, 30, 86, 0.1) 0%, rgba(57, 255, 20, 0.05) 100%);
   }
+
+  .hero-cta {
+    bottom: clamp(3.5rem, 12vw, 7.5rem);
+  }
+
+  @media (min-width: 768px) {
+    .hero-cta {
+      bottom: clamp(4.5rem, 10vw, 9rem);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .hero-cta {
+      bottom: clamp(5rem, 8vw, 10rem);
+    }
+  }
 }

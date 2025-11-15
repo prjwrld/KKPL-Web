@@ -14,3 +14,14 @@
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
 [00:00:12.344] Browser WARN    Image with src "http://127.0.0.1:60547/images/design-mode/0dd563_f73a8b6b1c3f4902bc5b1b670e3f2c94~mv2.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
 [00:21:06.007] Server  LOG      ✓ Compiled in 598ms
+[00:25:53.805] Server  LOG      ✓ Compiled in 270ms
+[00:27:00.729] Server  LOG      ✓ Compiled in 194ms
+[00:27:52.096] Server  LOG      ✓ Compiled in 211ms
+[00:29:21.755] Server  LOG      ✓ Compiled in 148ms
+[00:30:14.291] Server  LOG      ✓ Compiled in 138ms
+[00:31:04.203] Server  LOG      ✓ Compiled in 92ms
+[00:32:05.836] Server  LOG      ✓ Compiled in 73ms
+[00:32:41.383] Server  LOG      ✓ Compiled in 100ms
+[00:33:56.725] Server  LOG      ✓ Compiled in 135ms
+[00:35:23.447] Server  LOG      ✓ Compiled in 89ms
+[00:35:43.186] Server  LOG      ✓ Compiled in 469ms

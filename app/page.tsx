@@ -208,6 +208,13 @@ export default function HomePage() {
           priority
           sizes="100vw"
         />
+        <div className="hero-cta pointer-events-none absolute inset-x-0 flex justify-center">
+          <Link href="/news-events" className="pointer-events-auto">
+            <Button className="bg-[#39FF14] text-[#0A0E3F] hover:bg-[#2fd10f] text-xl md:text-2xl lg:text-3xl px-8 md:px-14 lg:px-16 py-4 md:py-5 lg:py-6 rounded-xl lg:rounded-2xl font-extrabold shadow-xl">
+              Register Now
+            </Button>
+          </Link>
+        </div>
       </section>
 
       {/* Introduction & Vision */}
