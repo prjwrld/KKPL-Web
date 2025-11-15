@@ -189,8 +189,8 @@ export default function HomePage() {
   const marqueeLogos = useMemo(() => [...sponsors, ...sponsors], [sponsors])
 
   const heroBannerImage = isMobile
-    ? "https://static.wixstatic.com/media/0dd563_bc7cde818c974c0bbd18686df9471b9e~mv2.png"
-    : "https://static.wixstatic.com/media/0dd563_c223cb0514404ed3b84bd9d069306b70~mv2.png"
+    ? "https://static.wixstatic.com/media/0dd563_c6dd49ac477149f8945d774e44a0c0a9~mv2.jpg"
+    : "https://static.wixstatic.com/media/0dd563_c74343bc7c4c45d2925b20c409e0042c~mv2.jpg"
 
   return (
     <div className="min-h-screen">
